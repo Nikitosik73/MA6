@@ -36,7 +36,7 @@ async def get_users(db: db_dependency):
 
 @app.get("/get_user_by_id")
 async def get_user_by_id(user_id: UUID, db: db_dependency):
-    result = db.query(database.DBDoc).filter(database.DBDoc.owner_id == user_id).first()
+    result = db.query(database.User).filter(database.User.id == user_id).first()
     print(user_id)
     print(result)
     if not result:
@@ -49,7 +49,7 @@ async def get_user_by_id(user_id: UUID, db: db_dependency):
 
 @app.post('/add_user')
 async def add_doc(user: User, db: db_dependency):
-    db_user = database.DBDoc(
+    db_user = database.User(
         id=user.id,
         name=user.name,
         second_name=user.second_name,
@@ -64,7 +64,7 @@ async def add_doc(user: User, db: db_dependency):
 @app.delete("/delete_user")
 async def delete_doc(user_id: UUID, db: db_dependency):
     try:
-        user_db = db.query(database.DBDoc).filter(database.DBDoc.id == user_id).first()
+        user_db = db.query(database.User).filter(database.User.id == user_id).first()
         db.delete(user_db)
         db.commit()
         return "Success"
