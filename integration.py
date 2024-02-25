@@ -10,10 +10,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
-sys.path.append(str(BASE_DIR / 'roulet_service/app'))
+sys.path.append(str(BASE_DIR / 'roulette_service/app'))
 sys.path.append(str(BASE_DIR / 'user_service/app'))
 
-from roulet_service.app.main import roulet_health as health_roulet
+from roulette_service.app.main import roulette_health as health_roulette
 from user_service.app.main import user_health as health_user
 
 def check_connect():
@@ -39,7 +39,7 @@ class TestIntegration(unittest.TestCase):
         self.assertEqual(check_connect(), True)
 
     def test_roulet_service_connection(self):
-        r = asyncio.run(health_roulet())
+        r = asyncio.run(health_roulette())
         self.assertEqual(r, {'message': 'service is active'})
 
     def test_user_service_connection(self):

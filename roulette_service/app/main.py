@@ -26,7 +26,7 @@ db_dependency = Annotated[Session, Depends(get_db)]
 
 
 @app.get("/health", status_code=status.HTTP_200_OK)
-async def roulet_health():
+async def roulette_health():
     return {'message': 'service is active'}
 
 
