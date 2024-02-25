@@ -28,8 +28,8 @@ jobs:
       - name: Run integration test
         run: python integration.py
 
-#      - name: Run component test
-#        run: python component.py
+      - name: Run component test
+        run: python component.py
 
 
       - name: Clean up (compose down)
