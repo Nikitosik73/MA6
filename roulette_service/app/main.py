@@ -51,7 +51,7 @@ async def roll(sum: int, point: str, db: db_dependency):
             status_code=404,
             detail=f'u cant choose this point'
         )
-    result = random.random(0, 36)
+    result = random.randrange(0, 36)
     if result == 0 and point == "green":
         balance += (sum * 10)
     elif (result % 2 == 0 and point == "black") or (result % 2 == 1 and point == "red"):
