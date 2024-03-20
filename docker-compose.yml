@@ -41,6 +41,10 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     command:
+      - "-Dkeycloak.migration.action=import"
+      - "-Dkeycloak.migration.provider=singleFile"
+      - "-Dkeycloak.migration.file=/opt/jboss/keycloak/imports/realm-export.json"
+      - "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING"
       - start-dev
 
   loki:

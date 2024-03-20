@@ -37,8 +37,6 @@ async def get_users(db: db_dependency):
 @app.get("/get_user_by_id")
 async def get_user_by_id(user_id: UUID, db: db_dependency):
     result = db.query(database.User).filter(database.User.id == user_id).first()
-    print(user_id)
-    print(result)
     if not result:
         raise HTTPException(
             status_code=404,
